@@ -1,0 +1,5 @@
+pom.xml.versionsBackup
+atlassian-ide-plugin.xml
+target
+*.iml
+.idea
