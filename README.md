@@ -1,7 +1,7 @@
 project-main
 ============
+Execute mvn install before running the server
 
-#Running server:
+####running
 
-cd runner/
-mvn spring-boot:run
+Execute mvn spring-boot:run in runner directory
