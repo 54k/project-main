@@ -2,23 +2,8 @@ package org.project.persistence.domain;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "EVENT")
@@ -35,6 +20,14 @@ public class EventEntity extends AbstractPersistable<Long> {
     private List<CommentEntity> comments = new ArrayList<>();
     @Column(name = "PUBLIC", nullable = false)
     private boolean isPublic = true;
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private UserEntity creator;
+    @ManyToMany
+    @JoinTable(name = "EVENT_PARTICIPANT",
+            joinColumns = @JoinColumn(name = "EVENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+    private List<UserEntity> participants;
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
@@ -92,6 +85,26 @@ public class EventEntity extends AbstractPersistable<Long> {
 
     public void setPublic(boolean isPublic) {
         this.isPublic = isPublic;
+    }
+
+    public UserEntity getCreator() {
+        return creator;
+    }
+
+    public void setCreator(UserEntity creator) {
+        this.creator = creator;
+    }
+
+    public List<UserEntity> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Collection<UserEntity> participants) {
+        this.participants.addAll(participants);
+    }
+
+    public void addParticipant(UserEntity participant) {
+        participants.add(participant);
     }
 
     public Date getCreated() {

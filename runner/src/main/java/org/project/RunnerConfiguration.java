@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
+@EnableAspectJAutoProxy
 @EnableAsync
 @Import({PersistenceConfiguration.class, WebConfiguration.class})
 public class RunnerConfiguration {

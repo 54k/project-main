@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
+@EnableAspectJAutoProxy
 @EnableWebMvc
 public class WebConfiguration {
 }
