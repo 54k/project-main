@@ -48,6 +48,9 @@ public class EventEntity extends AbstractPersistable<Long> {
             joinColumns = @JoinColumn(name = "EVENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "USER_ID"))
     private List<UserEntity> participants = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "EVENT_ID")
+    private List<AttachmentEntity> attachments = new ArrayList<>();
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
@@ -122,6 +125,18 @@ public class EventEntity extends AbstractPersistable<Long> {
 
     public void addParticipant(UserEntity participant) {
         participants.add(participant);
+    }
+
+    public List<AttachmentEntity> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<AttachmentEntity> attachments) {
+        this.attachments.addAll(attachments);
+    }
+
+    public void addAttachment(AttachmentEntity attachment) {
+        attachments.add(attachment);
     }
 
     public Date getCreated() {

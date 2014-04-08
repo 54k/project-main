@@ -18,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Import({PersistenceConfiguration.class, WebConfiguration.class})
 public class RunnerConfiguration {
     public static void main(String[] args) {
-        SpringApplication.run(RunnerConfiguration.class, args);
+        SpringApplication application = new SpringApplication(RunnerConfiguration.class);
+        application.run(args);
     }
 }
