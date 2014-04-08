@@ -2,7 +2,7 @@ package org.project.web.controller;
 
 import org.project.persistence.domain.EventEntity;
 import org.project.persistence.repository.EventRepository;
-import org.project.web.exeprtion.NotFoundException;
+import org.project.web.exeption.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
