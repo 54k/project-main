@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = "org.project")
 @EnableAutoConfiguration
 @EnableAspectJAutoProxy
 @EnableAsync

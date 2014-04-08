@@ -1,10 +1,30 @@
 package org.project.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
-import java.util.*;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+@JsonIgnoreProperties(value = {"new"}, ignoreUnknown = true)
 @Entity
 @Table(name = "EVENT")
 public class EventEntity extends AbstractPersistable<Long> {
@@ -27,12 +47,9 @@ public class EventEntity extends AbstractPersistable<Long> {
     @JoinTable(name = "EVENT_PARTICIPANT",
             joinColumns = @JoinColumn(name = "EVENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "USER_ID"))
-    private List<UserEntity> participants;
+    private List<UserEntity> participants = new ArrayList<>();
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
-
-    public EventEntity() {
-    }
 
     @PrePersist
     private void prePersist() {

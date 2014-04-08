@@ -7,7 +7,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = "org.project")
 @EnableAutoConfiguration
 @EnableJpaRepositories
 @EnableAspectJAutoProxy

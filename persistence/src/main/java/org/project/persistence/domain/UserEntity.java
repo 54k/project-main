@@ -1,11 +1,13 @@
 package org.project.persistence.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@JsonIgnoreProperties(value = {"new"}, ignoreUnknown = true)
 @Entity
 @Table(name = "USER")
 public class UserEntity extends AbstractPersistable<Long> {
