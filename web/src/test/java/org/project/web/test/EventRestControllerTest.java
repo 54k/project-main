@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {WebConfiguration.class, PersistenceConfiguration.class})
 @WebAppConfiguration
-public class EventControllerTest extends Assert {
+public class EventRestControllerTest extends Assert {
 
     @Autowired
     private WebApplicationContext context;

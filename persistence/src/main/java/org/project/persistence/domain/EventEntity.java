@@ -17,6 +17,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -28,8 +30,12 @@ import java.util.Set;
 @Entity
 @Table(name = "EVENT")
 public class EventEntity extends AbstractPersistable<Long> {
+    @NotNull
+    @Size(max = 255)
     @Column(name = "TITLE", length = 255, nullable = false)
     private String title;
+    @NotNull
+    @Size(max = 4000)
     @Column(name = "DESCRIPTION", length = 4000, nullable = false)
     private String description;
     @ElementCollection
@@ -38,8 +44,6 @@ public class EventEntity extends AbstractPersistable<Long> {
     private Set<String> tags = new HashSet<>();
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private List<CommentEntity> comments = new ArrayList<>();
-    @Column(name = "PUBLIC", nullable = false)
-    private boolean isPublic = true;
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private UserEntity creator;
@@ -97,14 +101,6 @@ public class EventEntity extends AbstractPersistable<Long> {
 
     public void addComment(CommentEntity comment) {
         comments.add(comment);
-    }
-
-    public boolean isPublic() {
-        return isPublic;
-    }
-
-    public void setPublic(boolean isPublic) {
-        this.isPublic = isPublic;
     }
 
     public UserEntity getCreator() {

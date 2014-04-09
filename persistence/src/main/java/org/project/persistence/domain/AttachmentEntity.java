@@ -11,14 +11,19 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @JsonIgnoreProperties(value = {"new"}, ignoreUnknown = true)
 @Entity
 @Table(name = "ATTACHMENT")
 public class AttachmentEntity extends AbstractPersistable<Long> {
+    @Size(max = 255)
     @Column(name = "NAME", nullable = false)
     private String name;
+    @NotNull
+    @Size(max = 4000)
     @Column(name = "URL", nullable = false, length = 4000)
     private String url;
     @Enumerated(EnumType.STRING)
