@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -45,13 +43,11 @@ public class EventEntity extends AbstractPersistable<Long> {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private List<CommentEntity> comments = new ArrayList<>();
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "CREATOR_ID")
     private UserEntity creator;
-    @ManyToMany
-    @JoinTable(name = "EVENT_PARTICIPANT",
-            joinColumns = @JoinColumn(name = "EVENT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "USER_ID"))
-    private List<UserEntity> participants = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "PARTICIPANT_ID")
+    private UserEntity participant;
     @OneToMany
     @JoinColumn(name = "EVENT_ID")
     private List<AttachmentEntity> attachments = new ArrayList<>();
@@ -111,16 +107,12 @@ public class EventEntity extends AbstractPersistable<Long> {
         this.creator = creator;
     }
 
-    public List<UserEntity> getParticipants() {
-        return participants;
+    public UserEntity getParticipant() {
+        return participant;
     }
 
-    public void setParticipants(Collection<UserEntity> participants) {
-        this.participants.addAll(participants);
-    }
-
-    public void addParticipant(UserEntity participant) {
-        participants.add(participant);
+    public void setParticipant(UserEntity participant) {
+        this.participant = participant;
     }
 
     public List<AttachmentEntity> getAttachments() {

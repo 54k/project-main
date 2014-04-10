@@ -18,6 +18,7 @@
     <properties>
         <webjars.destination>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</webjars.destination>
         <angularjs.version>1.2.16</angularjs.version>
+        <bootstrap.version>3.1.1</bootstrap.version>
     </properties>
 
     <dependencies>
@@ -25,6 +26,11 @@
             <groupId>org.webjars</groupId>
             <artifactId>angularjs</artifactId>
             <version>${angularjs.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${bootstrap.version}</version>
         </dependency>
     </dependencies>
 
@@ -35,8 +41,8 @@
                 <filtering>true</filtering>
             </resource>
             <resource>
+                <directory>src/main/lib</directory>
                 <filtering>true</filtering>
-                <directory>src/main/javascript</directory>
                 <targetPath>${webjars.destination}</targetPath>
             </resource>
         </resources>

@@ -15,7 +15,7 @@
     </description>
 
     <scm>
-        <connection>https://github.com/54k/project-main</connection>
+        <connection>scm:git:https://github.com/54k/project-main</connection>
     </scm>
 
     <parent>
