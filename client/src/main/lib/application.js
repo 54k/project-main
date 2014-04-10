@@ -6,7 +6,7 @@ app.config(["$routeProvider", function ($routeProvider) {
         controller: "EventController"
     }).when("/events/:eventId", {
         templateUrl: "template/event-detail.html",
-        controller: "EventController"
+        controller: "EventDetailController"
     }).otherwise({
         redirectTo: "/events"
     });
