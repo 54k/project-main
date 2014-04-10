@@ -7,10 +7,18 @@
 <body>
 <div ng-controller="EventController">
     <div ng-repeat="event in events">
-        {{event}}
+        <table>
+            <tbody>
+            <tr>
+                <td>{{event.title}}</td>
+                <td>{{event.description}}</td>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
-<script src="webjars/angularjs/1.2.16/angular.min.js"></script>
-<script src="webjars/client/EventController.js"></script>
+<script src="webjars/angularjs/${angularjs.version}/angular.min.js"></script>
+<script src="webjars/client/${project.version}/controller/EventController.js"></script>
 </body>
 </html>

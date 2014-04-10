@@ -16,14 +16,15 @@
     <description>Client project</description>
 
     <properties>
-        <webjars.destination>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/</webjars.destination>
+        <webjars.destination>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</webjars.destination>
+        <angularjs.version>1.2.16</angularjs.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>angularjs</artifactId>
-            <version>1.2.16</version>
+            <version>${angularjs.version}</version>
         </dependency>
     </dependencies>
 
@@ -32,17 +33,10 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-                <includes>
-                    <include>**/application.yml</include>
-                    <include>**/application.properties</include>
-                    <include>**/*</include>
-                </includes>
-                <excludes>
-                    <exclude>lib/**</exclude>
-                </excludes>
             </resource>
             <resource>
-                <directory>src/main/resources/lib</directory>
+                <filtering>true</filtering>
+                <directory>src/main/javascript</directory>
                 <targetPath>${webjars.destination}</targetPath>
             </resource>
         </resources>
