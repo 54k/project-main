@@ -26,6 +26,10 @@
             <groupId>org.project</groupId>
             <artifactId>web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.project</groupId>
+            <artifactId>client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
